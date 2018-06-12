@@ -1,0 +1,449 @@
+!SESSION 2018-06-12 14:56:21.488 -----------------------------------------------
+eclipse.buildId=4.7.2.M20171130-0510
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-06-12 14:57:09.932
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\216-32'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jface.text 2 0 2018-06-12 15:40:45.248
+!MESSAGE 
+!STACK 0
+org.eclipse.text.edits.MalformedTreeException: Range of child edit lies outside of parent edit
+	at org.eclipse.text.edits.TextEdit.internalAdd(TextEdit.java:773)
+	at org.eclipse.text.edits.TextEdit.addChild(TextEdit.java:333)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.addEdit(ASTRewriteAnalyzer.java:337)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.preVisit(ASTRewriteAnalyzer.java:1662)
+	at org.eclipse.jdt.core.dom.ASTVisitor.preVisit2(ASTVisitor.java:167)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2794)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.voidVisit(ASTRewriteAnalyzer.java:440)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.doTextRemoveAndVisit(ASTRewriteAnalyzer.java:411)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.rewriteBodyNode(ASTRewriteAnalyzer.java:957)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.visit(ASTRewriteAnalyzer.java:2795)
+	at org.eclipse.jdt.core.dom.ForStatement.accept0(ForStatement.java:224)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2796)
+	at org.eclipse.jdt.core.dom.rewrite.ASTRewrite.internalRewriteAST(ASTRewrite.java:302)
+	at org.eclipse.jdt.core.dom.rewrite.ASTRewrite.rewriteAST(ASTRewrite.java:291)
+	at org.eclipse.jdt.ui.text.java.correction.ASTRewriteCorrectionProposal.addEdits(ASTRewriteCorrectionProposal.java:113)
+	at org.eclipse.jdt.ui.text.java.correction.CUCorrectionProposal.createTextChange(CUCorrectionProposal.java:231)
+	at org.eclipse.jdt.ui.text.java.correction.CUCorrectionProposal.createChange(CUCorrectionProposal.java:238)
+	at org.eclipse.jdt.ui.text.java.correction.ChangeCorrectionProposal.getChange(ChangeCorrectionProposal.java:383)
+	at org.eclipse.jdt.ui.text.java.correction.CUCorrectionProposal.getTextChange(CUCorrectionProposal.java:248)
+	at org.eclipse.jdt.ui.text.java.correction.CUCorrectionProposal.getAdditionalProposalInfo(CUCorrectionProposal.java:141)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$Timer$2$1.run(AdditionalInfoController.java:113)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+
+!ENTRY org.eclipse.jdt.core 4 4 2018-06-12 16:17:11.752
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+import java.util.*;
+
+public class TestMap {
+
+	public static void main(String[] args) {
+		Map<String, String> map = new HashMap<>();
+		// 추가: .put(key, value)  value찾기: value = .get(key)
+		map.put("재이니", "청와대");
+		map.put("트럼프", "백악관");
+		map.put("김정은", "평양");
+		
+		System.out.println(map.get("재이니"));
+		
+		// 훑는방법1: iterator사용
+		//Iterator<String> itr = map.keySet().iterator();
+		Set<String> set = map.keySet(); // map.set(): map에 저장된 엔트리(키, 값) 중 키만 모은 셋 
+		Iterator<String> itr = set.iterator();
+		while( itr.hasNext() ) {
+			String key = itr.next();
+			System.out.println(String.format("키: %s, 값: %s,", key, map.get(key)));
+		}
+
+	    // 훑는방법2: 키셋을만들어 for()반복문 사용
+		for( String key : map.keySet()) {
+			System.out.println( String.format("키: %s, 값: %s,", key, map.get(key)));
+		}
+		
+		 // 훑는방법3: 엔트리셋을 만드는 방법
+		for( Map.Entry<String.>) {
+			System.out.println( String.format("키: %s, 값: %s,", key, map.get(key)));
+}
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2930)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2250)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1827)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToParenthesizedExpression(ASTConverter.java:3427)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1730)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1097)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1761)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2800)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1933)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2720)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:644)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:200)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3032)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1389)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:299)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1226)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:815)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:546)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:538)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:481)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:471)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:471)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:173)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:158)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2018-06-12 16:17:11.862
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2930)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2250)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1827)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToParenthesizedExpression(ASTConverter.java:3427)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1730)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1097)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1761)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2800)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1933)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2720)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:644)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:200)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3032)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1389)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:299)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1226)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:815)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:546)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:538)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:481)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:471)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:471)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:173)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:158)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2018-06-12 16:17:11.862
+!MESSAGE Error in JDT Core during AST creation
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2930)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2250)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1827)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToParenthesizedExpression(ASTConverter.java:3427)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1730)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1097)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1761)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2800)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1933)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2720)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:644)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:200)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3032)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1389)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:299)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1226)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:815)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:546)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:538)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:481)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:471)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:471)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:173)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:158)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+
+!ENTRY org.eclipse.jdt.core 4 4 2018-06-12 16:17:11.862
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+import java.util.*;
+
+public class TestMap {
+
+	public static void main(String[] args) {
+		Map<String, String> map = new HashMap<>();
+		// 추가: .put(key, value)  value찾기: value = .get(key)
+		map.put("재이니", "청와대");
+		map.put("트럼프", "백악관");
+		map.put("김정은", "평양");
+		
+		System.out.println(map.get("재이니"));
+		
+		// 훑는방법1: iterator사용
+		//Iterator<String> itr = map.keySet().iterator();
+		Set<String> set = map.keySet(); // map.set(): map에 저장된 엔트리(키, 값) 중 키만 모은 셋 
+		Iterator<String> itr = set.iterator();
+		while( itr.hasNext() ) {
+			String key = itr.next();
+			System.out.println(String.format("키: %s, 값: %s,", key, map.get(key)));
+		}
+
+	    // 훑는방법2: 키셋을만들어 for()반복문 사용
+		for( String key : map.keySet()) {
+			System.out.println( String.format("키: %s, 값: %s,", key, map.get(key)));
+		}
+		
+		 // 훑는방법3: 엔트리셋을 만드는 방법
+		for( Map.Entry<String.>) {
+			System.out.println( String.format("키: %s, 값: %s,", key, map.get(key)));
+}
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2930)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2250)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1827)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToParenthesizedExpression(ASTConverter.java:3427)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1730)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1097)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1761)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2800)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1933)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2720)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:644)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:200)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3032)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1389)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:299)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1226)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:815)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:546)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:538)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:481)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:471)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.recommenders.rcp.utils.JdtUtils.findAstNodeFromEditorSelection(JdtUtils.java:669)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService.handleSelectionInEditor(JavaElementSelectionService.java:110)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService.access$1(JavaElementSelectionService.java:105)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService$1.run(JavaElementSelectionService.java:82)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2018-06-12 16:17:11.862
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2930)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2250)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1827)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToParenthesizedExpression(ASTConverter.java:3427)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1730)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1097)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1761)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2800)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1933)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2720)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:644)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:200)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3032)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1389)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:299)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1226)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:815)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:546)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:538)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:481)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:471)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.recommenders.rcp.utils.JdtUtils.findAstNodeFromEditorSelection(JdtUtils.java:669)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService.handleSelectionInEditor(JavaElementSelectionService.java:110)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService.access$1(JavaElementSelectionService.java:105)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService$1.run(JavaElementSelectionService.java:82)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2018-06-12 16:17:11.862
+!MESSAGE Error in JDT Core during AST creation
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2930)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2250)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1827)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToParenthesizedExpression(ASTConverter.java:3427)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1730)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1097)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1761)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2800)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1933)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2720)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:644)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:200)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3032)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1389)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:299)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1226)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:815)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:546)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:538)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:481)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:471)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.recommenders.rcp.utils.JdtUtils.findAstNodeFromEditorSelection(JdtUtils.java:669)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService.handleSelectionInEditor(JavaElementSelectionService.java:110)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService.access$1(JavaElementSelectionService.java:105)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService$1.run(JavaElementSelectionService.java:82)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.jdt.core 4 4 2018-06-12 16:17:12.455
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+import java.util.*;
+
+public class TestMap {
+
+	public static void main(String[] args) {
+		Map<String, String> map = new HashMap<>();
+		// 추가: .put(key, value)  value찾기: value = .get(key)
+		map.put("재이니", "청와대");
+		map.put("트럼프", "백악관");
+		map.put("김정은", "평양");
+		
+		System.out.println(map.get("재이니"));
+		
+		// 훑는방법1: iterator사용
+		//Iterator<String> itr = map.keySet().iterator();
+		Set<String> set = map.keySet(); // map.set(): map에 저장된 엔트리(키, 값) 중 키만 모은 셋 
+		Iterator<String> itr = set.iterator();
+		while( itr.hasNext() ) {
+			String key = itr.next();
+			System.out.println(String.format("키: %s, 값: %s,", key, map.get(key)));
+		}
+
+	    // 훑는방법2: 키셋을만들어 for()반복문 사용
+		for( String key : map.keySet()) {
+			System.out.println( String.format("키: %s, 값: %s,", key, map.get(key)));
+		}
+		
+		 // 훑는방법3: 엔트리셋을 만드는 방법
+		for( Map.Entry<String. >) {
+			System.out.println( String.format("키: %s, 값: %s,", key, map.get(key)));
+}
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2930)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2250)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1827)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToParenthesizedExpression(ASTConverter.java:3427)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1730)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1097)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1761)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2800)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1933)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2720)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:644)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:200)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3032)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1389)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:299)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1226)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:815)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:546)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:538)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:481)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:173)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:158)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2018-06-12 16:17:12.455
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2930)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2250)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1827)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToParenthesizedExpression(ASTConverter.java:3427)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1730)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1097)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1761)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2800)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1933)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2720)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:644)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:200)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3032)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1389)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:299)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1226)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:815)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:546)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:538)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:481)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:173)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:158)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2018-06-12 16:17:12.471
+!MESSAGE Error in JDT Core during AST creation
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2930)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2250)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1827)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToParenthesizedExpression(ASTConverter.java:3427)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1730)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1097)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1761)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2800)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1933)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2720)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:644)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:200)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3032)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1389)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:299)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1226)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:815)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:546)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:538)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:481)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:173)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:158)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)

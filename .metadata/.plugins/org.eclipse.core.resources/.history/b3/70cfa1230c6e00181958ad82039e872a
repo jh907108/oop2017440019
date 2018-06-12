@@ -1,0 +1,18 @@
+import java.util.*;
+
+
+public class TestQueue {
+	public static void main(String[] args) {
+		Queue<String> strs = new LinkedList<>();
+		strs.add("trump");
+		strs.add("jungeun");
+		strs.add("jaein");
+		strs.add("jonpyo");
+		
+		while (!strs.isEmpty()) { //for(요소타입 참조변수: 콜렉션변수)
+			System.out.println(strs.remove());	
+		}
+		
+	}
+
+}

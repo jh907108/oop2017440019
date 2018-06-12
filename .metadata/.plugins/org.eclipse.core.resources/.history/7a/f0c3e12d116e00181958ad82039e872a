@@ -1,0 +1,22 @@
+import java.util.*;
+
+public class TestMap {
+
+	public static void main(String[] args) {
+		Map<String, String> map = new HashMap<>();
+		// 추가: .put(key, value)  value찾기: value = .get(key)
+		map.put("재이니", "청와대");
+		map.put("트럼프", "백악관");
+		map.put("김정은", "평양");
+		
+		System.out.println(map.get("재이니"));
+		
+		// 훑는방법: iterator사용
+		Iterator<String> itr = map.keySet().iterator();
+		while( itr.hasNext() ) {
+			String key = itr.next();
+			System.out.println(String.format("키: %s, 값: %s,", key, map.get(key)));
+		}
+	}
+
+}
